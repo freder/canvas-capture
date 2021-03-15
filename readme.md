@@ -21,3 +21,9 @@ capture.start();
 // ...
 capture.stop();
 ```
+
+## server
+
+```shell
+node server.js
+```
