@@ -38,6 +38,7 @@ const capture = new CanvasCapture(
 		serverUrl: 'http://localhost:3000',
 		callback: () => {
 			console.log(capture.frameCounter);
+			location.hash = `#---RECORDING-(${capture.frameCounter})---`;
 
 			// since seeking takes some time,
 			// we need to wait for it
@@ -55,6 +56,7 @@ const capture = new CanvasCapture(
 			return Promise.all([p1, p2]).then(() => {
 				if (capture.frameCounter === numFramesToCapture) {
 					capture.stop();
+					location.hash = '';
 
 					// resume regular playback
 					video1.play();
@@ -75,4 +77,13 @@ capture.start();
 
 ```shell
 node server.js
+```
+
+
+## video from stills
+
+for example (but up to you really):
+
+```shell
+ffmpeg -y -r 30 -pattern_type glob -i 'output/*.png' -c:v libx264 -vf fps=30 -pix_fmt yuv420p out.mp4
 ```
