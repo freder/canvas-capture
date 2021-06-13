@@ -28,6 +28,7 @@ export class CanvasCapture {
 	start(): void {
 		this.frameCounter = 0;
 		this.timeElapsed = -this.timeStep;
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		window.requestAnimationFrame = async (fn): Promise<void> => {
 			this.frameCounter++;
