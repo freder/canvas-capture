@@ -2,7 +2,6 @@
   "name": "canvas-capture",
   "version": "0.0.0",
   "description": "",
-  "type": "module",
   "scripts": {
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",

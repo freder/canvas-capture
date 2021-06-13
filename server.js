@@ -1,8 +1,9 @@
-import fs from 'fs';
-import path from 'path';
+/* eslint-disable @typescript-eslint/no-var-requires */
+const fs = require('fs');
+const path = require('path');
 
-import express from 'express';
-import cors from 'cors';
+const express = require('express');
+const cors = require('cors');
 
 
 const port = 3000;
