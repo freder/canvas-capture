@@ -4,6 +4,7 @@ const raf = window.requestAnimationFrame;
 declare type CaptureOptions = {
 	fps: number;
 	serverUrl: string;
+	callback?: () => Promise<unknown>;
 };
 
 
@@ -13,6 +14,7 @@ export class CanvasCapture {
 	timeStep: number;
 	frameCounter: number;
 	serverUrl: string;
+	callback: () => Promise<unknown>;
 
 	constructor(canvas: HTMLCanvasElement, options: CaptureOptions) {
 		this.canvas = canvas;
@@ -20,17 +22,18 @@ export class CanvasCapture {
 		this.timeStep = 1000 / options.fps;
 		this.timeElapsed = 0;
 		this.frameCounter = 0;
+		this.callback = options.callback || (() => Promise.resolve());
 	}
 
 	start(): void {
 		this.frameCounter = 0;
 		this.timeElapsed = -this.timeStep;
 		// @ts-ignore
-			console.log(this.frameCounter);
 		window.requestAnimationFrame = async (fn): Promise<void> => {
 			this.frameCounter++;
 			this.timeElapsed += this.timeStep;
 			await this.capture();
+			await this.callback();
 			fn(this.timeElapsed);
 		};
 	}
