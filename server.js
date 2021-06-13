@@ -3,15 +3,13 @@ import path from 'path';
 
 import express from 'express';
 import cors from 'cors';
-import bodyParser from 'body-parser';
 
 
 const port = 3000;
 const app = express();
 
 app.use(cors());
-app.use(bodyParser({ limit: '50mb' }));
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
 
 app.post('/', (req, res) => {
 	const frameNumber = req.body.frameNumber;
