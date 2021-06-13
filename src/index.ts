@@ -7,7 +7,7 @@ declare type CaptureOptions = {
 };
 
 
-export class Capture {
+export class CanvasCapture {
 	canvas: HTMLCanvasElement;
 	timeElapsed: number;
 	timeStep: number;
