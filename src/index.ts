@@ -4,6 +4,7 @@ const raf = window.requestAnimationFrame;
 declare type CaptureOptions = {
 	fps: number;
 	serverUrl: string;
+	name?: string;
 	callback?: () => Promise<unknown>;
 };
 
@@ -15,6 +16,7 @@ export class CanvasCapture {
 	frameCounter: number;
 	serverUrl: string;
 	callback: () => Promise<unknown>;
+	name: string | undefined;
 
 	constructor(canvas: HTMLCanvasElement, options: CaptureOptions) {
 		this.canvas = canvas;
@@ -23,6 +25,7 @@ export class CanvasCapture {
 		this.timeElapsed = 0;
 		this.frameCounter = 0;
 		this.callback = options.callback || (() => Promise.resolve());
+		this.name = options.name;
 	}
 
 	start(): void {
@@ -48,6 +51,7 @@ export class CanvasCapture {
 		const payload = {
 			frameNumber: this.frameCounter,
 			dataUrl: this.canvas.toDataURL(),
+			name: this.name,
 		};
 		return fetch(
 			this.serverUrl,

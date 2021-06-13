@@ -19,6 +19,10 @@ const capture = new CanvasCapture(
 	{
 		fps: 30,
 		serverUrl: 'http://localhost:3000',
+
+		// optional:
+		callback: () => Promise.resolve(), // on every frame
+		name: 'outputSubdirName',
 	}
 );
 capture.start();
