@@ -26,8 +26,8 @@ export class CanvasCapture {
 		this.frameCounter = 0;
 		this.timeElapsed = -this.timeStep;
 		// @ts-ignore
-		window.requestAnimationFrame = async (fn): Promise<any> => {
 			console.log(this.frameCounter);
+		window.requestAnimationFrame = async (fn): Promise<void> => {
 			this.frameCounter++;
 			this.timeElapsed += this.timeStep;
 			await this.capture();
@@ -40,7 +40,7 @@ export class CanvasCapture {
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	capture(): Promise<any> {
+	capture(): Promise<Response> {
 		const payload = {
 			frameNumber: this.frameCounter,
 			dataUrl: this.canvas.toDataURL(),
