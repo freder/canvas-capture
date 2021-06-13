@@ -1,9 +1,9 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
 
 
 const port = 3000;
@@ -12,7 +12,6 @@ const app = express();
 app.use(cors());
 app.use(bodyParser({ limit: '50mb' }));
 app.use(express.json());
-
 
 app.post('/', (req, res) => {
 	const frameNumber = req.body.frameNumber;
