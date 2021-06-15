@@ -14,9 +14,18 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 
 app.post('/', (req, res) => {
-	const { frameNumber, dataUrl, name: subdir } = req.body;
-	const base64Data = dataUrl.replace(/^data:image\/png;base64,/, '');
-	const fileName = String(frameNumber).padStart(10, '0') + '.png';
+	const {
+		format,
+		frameNumber,
+		dataUrl,
+		name: subdir,
+	} = req.body;
+	const base64Data = dataUrl.replace(
+		new RegExp(`^data:image\\/${format};base64,`),
+		''
+	);
+	const ext = { png: '.png', jpeg: '.jpg' }[format];
+	const fileName = String(frameNumber).padStart(10, '0') + ext;
 	const outputDir = (subdir)
 		? path.join('output', subdir)
 		: 'output';

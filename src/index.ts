@@ -2,6 +2,8 @@ const raf = window.requestAnimationFrame;
 
 
 declare type CaptureOptions = {
+	format: 'png' | 'jpeg',
+	quality: number,
 	fps: number;
 	serverUrl: string;
 	name?: string;
@@ -10,6 +12,8 @@ declare type CaptureOptions = {
 
 
 export class CanvasCapture {
+	format: 'png' | 'jpeg';
+	quality: number;
 	canvas: HTMLCanvasElement;
 	timeElapsed: number;
 	timeStep: number;
@@ -26,6 +30,8 @@ export class CanvasCapture {
 		this.frameCounter = 0;
 		this.callback = options.callback || (() => Promise.resolve());
 		this.name = options.name;
+		this.format = options.format || 'jpeg';
+		this.quality = options.quality || 0.9;
 	}
 
 	start(): void {
@@ -49,8 +55,12 @@ export class CanvasCapture {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	capture(): Promise<Response> {
 		const payload = {
+			format: this.format,
 			frameNumber: this.frameCounter,
-			dataUrl: this.canvas.toDataURL(),
+			dataUrl: this.canvas.toDataURL(
+				`image/${this.format}`,
+				this.quality
+			),
 			name: this.name,
 		};
 		return fetch(

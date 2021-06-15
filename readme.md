@@ -21,6 +21,8 @@ const capture = new CanvasCapture(
 		serverUrl: 'http://localhost:3000',
 
 		// optional:
+		format: 'jpeg', // or 'png'
+		quality: 0.9,
 		callback: () => Promise.resolve(), // on every frame
 		name: 'outputSubdirName',
 	}
@@ -41,7 +43,6 @@ const capture = new CanvasCapture(
 		fps: 30,
 		serverUrl: 'http://localhost:3000',
 		callback: () => {
-			console.log(capture.frameCounter);
 			location.hash = `#---RECORDING-(${capture.frameCounter})---`;
 
 			// since seeking takes some time,
