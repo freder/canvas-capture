@@ -1,7 +1,7 @@
 const raf = window.requestAnimationFrame;
 
 
-declare type CaptureOptions = {
+type CaptureOptions = {
 	format: 'png' | 'jpeg',
 	quality: number,
 	fps: number;
@@ -52,7 +52,6 @@ export class CanvasCapture {
 		window.requestAnimationFrame = raf;
 	}
 
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	capture(): Promise<Response> {
 		const payload = {
 			format: this.format,
