@@ -6,9 +6,7 @@ super basic https://github.com/spite/ccapture.js alternative.
 - sends canvas contents as data url to server
 - server saves stills to disk
 
-## ⚠️
-- kind of WIP (will extend this as needed over time)
-- PRs welcome
+still kind of _WIP_ (will extend this as needed over time)
 
 
 ## example 1: basic
@@ -45,8 +43,7 @@ const capture = new CanvasCapture(
 		callback: () => {
 			location.hash = `#---RECORDING-(${capture.frameCounter})---`;
 
-			// since seeking takes some time,
-			// we need to wait for it
+			// wait for seeking to finish
 			const p1 = new Promise((resolve) => {
 				video1.onseeked = resolve;
 			});
