@@ -1,7 +1,10 @@
 {
-  "name": "canvas-capture",
-  "version": "0.0.0",
+  "name": "@freder/canvas-capture",
+  "version": "1.0.0",
   "description": "",
+  "bin": {
+    "canvas-capture": "./server.js"
+  },
   "scripts": {
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
@@ -15,14 +18,14 @@
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.13.10",
     "@babel/preset-typescript": "^7.13.0",
-    "@typescript-eslint/eslint-plugin": "^4.26.1",
-    "@typescript-eslint/parser": "^4.26.1",
-    "eslint": "^7.22.0",
-    "typescript": "^4.2.3"
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "typescript": "^5.0.2"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mkdirp": "^1.0.4"
+    "mkdirp": "^2.1.6"
   }
 }
