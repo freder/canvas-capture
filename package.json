@@ -17,12 +17,12 @@
     "@babel/preset-typescript": "^7.13.0",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
-    "eslint": "^7.22.0",
+    "eslint": "^8.36.0",
     "typescript": "^5.0.2"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mkdirp": "^1.0.4"
+    "mkdirp": "^2.1.6"
   }
 }
