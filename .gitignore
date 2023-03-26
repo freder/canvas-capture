@@ -1,3 +1,4 @@
 dist
 output
 .vscode
+node_modules
