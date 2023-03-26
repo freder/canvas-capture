@@ -2,6 +2,9 @@
   "name": "canvas-capture",
   "version": "1.0.0",
   "description": "",
+  "bin": {
+    "canvas-capture": "./server.js"
+  },
   "scripts": {
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
