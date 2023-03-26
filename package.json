@@ -1,5 +1,5 @@
 {
-  "name": "canvas-capture",
+  "name": "@freder/canvas-capture",
   "version": "1.0.0",
   "description": "",
   "bin": {
